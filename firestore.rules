@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Multi-tenant real-time sync collection for live accounts & transactions
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

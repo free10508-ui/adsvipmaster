@@ -1,0 +1,72 @@
+{
+  "entities": {
+    "Account": {
+      "title": "Account",
+      "description": "User account in the platform including balances, team, and pending commissions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "username": { "type": "string" },
+        "totalBalanceUSDT": { "type": "number" },
+        "totalDepositedUSDT": { "type": "number" },
+        "vipLevel": { "type": "number" },
+        "referralCode": { "type": "string" },
+        "referredBy": { "type": "string" },
+        "pending_commissions": { "type": "number" },
+        "pendingReferralRewardsUSDT": { "type": "number" },
+        "referralEarningsUSDT": { "type": "number" },
+        "tasksCompletedToday": { "type": "number" },
+        "lastModified": { "type": "number" }
+      },
+      "required": ["email"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Financial and commission transactions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "amountUSDT": { "type": "number" },
+        "status": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "type", "amountUSDT", "status"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "System and user notifications and transactions alerts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userId": { "type": "string" },
+        "type": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "amount": { "type": "number" },
+        "vipLevel": { "type": "number" },
+        "badgeLabel": { "type": "string" },
+        "read": { "type": "boolean" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "type", "title", "message", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/accounts/{accountId}": {
+      "schema": "Account",
+      "description": "User accounts and real-time pending commissions"
+    },
+    "/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Platform transactions"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "User notifications and transaction alerts"
+    }
+  }
+}

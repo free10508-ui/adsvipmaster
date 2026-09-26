@@ -1,0 +1,39 @@
+{
+  "id": "/",
+  "name": "ADS VIP - الاستثمار الرقمي الذكي",
+  "short_name": "ADS VIP",
+  "description": "النسخة الرسمية والمحدثة بالكامل لمنصة ADS VIP الاستثمارية",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0A0B10",
+  "theme_color": "#0A0B10",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "productivity", "business"],
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

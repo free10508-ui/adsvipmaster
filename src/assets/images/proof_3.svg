@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="380" height="618" viewBox="0 0 380 618" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="380" height="618" rx="0" fill="#FFFFFF"/>
+  
+  <!-- Header Bar -->
+  <rect width="380" height="60" fill="#FFFFFF"/>
+  
+  <!-- Register | Login -->
+  <g transform="translate(16, 28)">
+    <text x="0" y="0" fill="#707A8A" font-size="12" font-weight="500" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Register | Log...</text>
+    
+    <!-- Bell icon with dot -->
+    <g transform="translate(90, -10)">
+      <path d="M6 3a3 3 0 00-3 3v2.586l-.707.707A1 1 0 003 11h8a1 1 0 00.707-1.707L11 8.586V6a3 3 0 00-3-3H6z" fill="#707A8A"/>
+      <circle cx="11" cy="3" r="2.5" fill="#EF0027"/>
+    </g>
+  </g>
+  
+  <!-- TRONSCAN Logo -->
+  <g transform="translate(270, 16)">
+    <!-- Red block with diamond -->
+    <rect width="18" height="18" rx="3" fill="#EF0027"/>
+    <path d="M9 3L15 9L9 15L3 9L9 3Z" fill="#FFFFFF" fill-opacity="0.9"/>
+    <path d="M9 5L13 9L9 13L5 9L9 5Z" fill="#EF0027"/>
+    <text x="22" y="14" fill="#EF0027" font-size="12" font-weight="900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" letter-spacing="-0.5">TRONSCAN</text>
+  </g>
+  
+  <!-- Sub Header: TRX Price & Menu -->
+  <rect y="50" width="380" height="32" fill="#FAFAFB"/>
+  <line x1="0" y1="50" x2="380" y2="50" stroke="#F0F2F5" stroke-width="1"/>
+  <line x1="0" y1="82" x2="380" y2="82" stroke="#F0F2F5" stroke-width="1"/>
+  
+  <g transform="translate(16, 71)">
+    <text x="0" y="0" fill="#474D57" font-size="11" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TRX: </text>
+    <text x="30" y="0" fill="#00A76F" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">$0.3287 (+1.08%)</text>
+  </g>
+  
+  <!-- Hamburger Menu Icon -->
+  <g transform="translate(348, 62)">
+    <rect width="16" height="2" rx="1" fill="#474D57"/>
+    <rect y="5" width="16" height="2" rx="1" fill="#474D57"/>
+    <rect y="10" width="16" height="2" rx="1" fill="#474D57"/>
+  </g>
+  
+  <!-- Table Header -->
+  <g transform="translate(16, 102)">
+    <text x="0" y="0" fill="#848E9C" font-size="11" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Amount</text>
+    <text x="304" y="0" fill="#848E9C" font-size="11" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Token ∇</text>
+  </g>
+  
+  <!-- Table Rows -->
+  
+      <!-- Row 1 -->
+      <line x1="16" y1="110" x2="364" y2="110" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 134)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-1,390</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 2 -->
+      <line x1="16" y1="146" x2="364" y2="146" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 170)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-3,088.605258</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 3 -->
+      <line x1="16" y1="182" x2="364" y2="182" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 206)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-3,093.494529</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 4 -->
+      <line x1="16" y1="218" x2="364" y2="218" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 242)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-3,094.5</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 5 -->
+      <line x1="16" y1="254" x2="364" y2="254" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 278)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-59.3</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 6 -->
+      <line x1="16" y1="290" x2="364" y2="290" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 314)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-59.451023</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 7 -->
+      <line x1="16" y1="326" x2="364" y2="326" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 350)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-90.233157</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 8 -->
+      <line x1="16" y1="362" x2="364" y2="362" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 386)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-36.382585</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 9 -->
+      <line x1="16" y1="398" x2="364" y2="398" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 422)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-496.37</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 10 -->
+      <line x1="16" y1="434" x2="364" y2="434" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 458)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-2,157.252046</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 11 -->
+      <line x1="16" y1="470" x2="364" y2="470" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 494)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-93.524085</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 12 -->
+      <line x1="16" y1="506" x2="364" y2="506" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 530)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-2,469.616992</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+      <!-- Row 13 -->
+      <line x1="16" y1="542" x2="364" y2="542" stroke="#F2F3F5" stroke-width="1" />
+      <g transform="translate(16, 566)">
+        <!-- Amount -->
+        <text x="0" y="0" fill="#DF383B" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">-357.5</text>
+        
+        <!-- Tether Icon -->
+        <g transform="translate(250, -13)">
+          <circle cx="10" cy="10" r="9" fill="#26A17B" />
+          <path d="M6 7h8v2h-3v7h-2V9H6V7z" fill="#FFFFFF" />
+        </g>
+        
+        <!-- USDT Text -->
+        <text x="276" y="-2" fill="#DF383B" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">USDT</text>
+        
+        <!-- Contract Address -->
+        <text x="276" y="9" fill="#848E9C" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TR7NHq...Lj6t</text>
+      </g>
+    
+  
+  <!-- Blockchain Verification Stamp -->
+  <g transform="translate(16, 600)">
+    <rect width="348" height="24" rx="6" fill="#F0FDF4" stroke="#DCFCE7" stroke-width="1"/>
+    <circle cx="12" cy="12" r="5" fill="#16A34A"/>
+    <path d="M10 12l1.5 1.5L14 10" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="24" y="16" fill="#15803D" font-size="10" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TronScan Explorer Verified • 100% On-Chain Confirmed</text>
+  </g>
+</svg>

@@ -263,11 +263,21 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLogin, onLoginSuccess 
         throw new Error(language === 'ar' ? 'لم يتم العثور على بريد إلكتروني في حساب Google' : 'No email found in Google account');
       }
 
+      const googlePhoto = result.user.photoURL;
+      if (googlePhoto) {
+        try {
+          localStorage.setItem(`vipads_user_avatar_${googleEmail}`, googlePhoto);
+        } catch {}
+      }
+
       const displayName = result.user.displayName || googleEmail.split('@')[0];
       const userExists = storage.userExists(googleEmail);
       const existingUser = storage.getUserByEmail(googleEmail);
 
       if (userExists && existingUser) {
+        if (googlePhoto) {
+          storage.updateUser(googleEmail, { avatarUrl: googlePhoto, photoURL: googlePhoto });
+        }
         // Existing user: Keep 100% of their money, balances, vipLevel, tasks intact!
         try {
           localStorage.setItem('vipads_is_logged_in', 'true');
@@ -302,6 +312,9 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLogin, onLoginSuccess 
           localStorage.setItem('vipads_is_logged_in', 'true');
           localStorage.setItem('vipads_user_registered', 'true');
           storage.setCurrentUserEmail(googleEmail);
+          if (googlePhoto) {
+            storage.updateUser(googleEmail, { avatarUrl: googlePhoto, photoURL: googlePhoto });
+          }
         } catch {}
 
         const loginCallback = onLogin || onLoginSuccess;

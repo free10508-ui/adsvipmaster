@@ -28,6 +28,7 @@ import { UserProfile, VIPPlan, ReferredMember, ReferralMilestone, Transaction } 
 import { useLanguage } from '../../context/LanguageContext';
 import { soundEngine } from '../../utils/audio';
 import { storage } from '../../utils/storage';
+import { auth } from '../../utils/firebaseSync';
 import { FinancialRecordsModal } from '../Modals/FinancialRecordsModal';
 import { AccountSettingsModal } from '../Modals/AccountSettingsModal';
 import { ChangePasswordModal } from '../Modals/ChangePasswordModal';
@@ -110,6 +111,32 @@ export const ProfileView: React.FC<ProfileViewProps> = React.memo(({
   // Real Deposit Balance tied strictly to user's account in localStorage (مبلغ الإيداع الفعلي)
   const totalRechargeUSDT = Math.max(0, Number((user.totalDepositedUSDT ?? 0).toFixed(2)));
 
+  // User profile picture resolution from Google / Gmail account or Firebase Auth
+  const [imgError, setImgError] = useState(false);
+
+  const resolvedAvatarUrl = useMemo(() => {
+    // 1. Direct photoURL from Firebase Auth currentUser
+    const directAuthPhoto = auth?.currentUser?.photoURL;
+    if (directAuthPhoto) return directAuthPhoto;
+
+    // 2. Avatar URL from user profile
+    if (user?.avatarUrl) return user.avatarUrl;
+    if (user?.photoURL) return user.photoURL;
+
+    // 3. Stored avatar in localStorage
+    try {
+      const stored = localStorage.getItem(`vipads_user_avatar_${cleanEmail}`);
+      if (stored) return stored;
+    } catch {}
+
+    // 4. If Gmail account, resolve authentic Google profile picture via unavatar
+    if (cleanEmail.includes('@gmail.com') || cleanEmail.includes('@googlemail.com')) {
+      return `https://unavatar.io/google/${encodeURIComponent(cleanEmail)}`;
+    }
+
+    return null;
+  }, [user?.avatarUrl, user?.photoURL, cleanEmail]);
+
   const copyEmail = () => {
     navigator.clipboard.writeText(userEmail);
     setCopiedEmail(true);
@@ -150,19 +177,30 @@ export const ProfileView: React.FC<ProfileViewProps> = React.memo(({
           {/* Top Line: User Avatar, Email with Copy, and Live Status */}
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
-              {/* Compact VIP Avatar */}
+              {/* Compact VIP Avatar with Google / Gmail Profile Photo */}
               <div className="relative shrink-0">
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#FF6B00] via-amber-500 to-yellow-400 p-0.5 shadow-[0_0_15px_rgba(255,107,0,0.35)]">
                   <div className="w-full h-full bg-[#0B0D14] rounded-[14px] flex items-center justify-center relative overflow-hidden">
-                    <User className="w-5 h-5 text-[#FF6B00]" />
+                    {resolvedAvatarUrl && !imgError ? (
+                      <img
+                        src={resolvedAvatarUrl}
+                        alt="Gmail Profile"
+                        referrerPolicy="no-referrer"
+                        crossOrigin="anonymous"
+                        onError={() => setImgError(true)}
+                        className="w-full h-full object-cover object-center rounded-[14px]"
+                      />
+                    ) : (
+                      <User className="w-5 h-5 text-[#FF6B00]" />
+                    )}
                     {user.vipLevel > 0 && (
-                      <div className="absolute top-1 right-1">
+                      <div className="absolute top-1 right-1 z-10">
                         <Crown className="w-3 h-3 text-amber-400 fill-amber-400 drop-shadow-[0_0_4px_rgba(251,191,36,0.8)]" />
                       </div>
                     )}
                   </div>
                 </div>
-                <span className="absolute -bottom-1 -right-1 px-1.5 py-0.2 rounded-full bg-emerald-500 text-black font-black text-[7px] font-mono border-2 border-[#0B0D14] shadow-[0_0_8px_#10B981]">
+                <span className="absolute -bottom-1 -right-1 px-1.5 py-0.2 rounded-full bg-emerald-500 text-black font-black text-[7px] font-mono border-2 border-[#0B0D14] shadow-[0_0_8px_#10B981] z-10">
                   LIVE
                 </span>
               </div>
@@ -303,54 +341,29 @@ export const ProfileView: React.FC<ProfileViewProps> = React.memo(({
 
       </div>
 
-      {/* 2.5 7-DAY TASK HISTORY QUICK BANNER */}
+      {/* 2.5 7-DAY TASK HISTORY QUICK BANNER (Slim & Compact One-Line) */}
       <div 
         id="profile-task-history-banner"
         onClick={() => {
           soundEngine.playClick();
           setShowTaskHistory(true);
         }}
-        className="rounded-3xl p-4 sm:p-5 glass border border-amber-500/35 bg-gradient-to-r from-amber-500/15 via-[#151928]/90 to-[#0A0D18]/95 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_20px_rgba(245,158,11,0.15)] hover:border-amber-400/60 transition-all cursor-pointer group active:scale-[0.99] backdrop-blur-xl relative overflow-hidden"
+        className="rounded-2xl py-2.5 px-3.5 sm:px-4.5 glass border border-amber-500/35 bg-gradient-to-r from-amber-500/15 via-[#151928]/90 to-[#0A0D18]/95 shadow-[0_4px_20px_rgba(0,0,0,0.35),0_0_15px_rgba(245,158,11,0.12)] hover:border-amber-400/60 transition-all cursor-pointer group active:scale-[0.99] backdrop-blur-xl relative overflow-hidden flex items-center justify-between gap-3"
       >
         {/* Ambient Top Glow */}
-        <div className="absolute top-0 right-1/4 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-28 h-28 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
-        <div className="flex items-center justify-between gap-3 relative z-10">
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500/25 to-[#FF6B00]/25 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-              <History className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm sm:text-base font-black text-white">
-                  {isArabic ? 'سجل إنجاز المهام وعوائد الـ 7 أيام' : '7-Day Task History & Rewards'}
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono shadow-[0_0_8px_rgba(245,158,11,0.25)]">
-                  7 DAYS
-                </span>
-              </div>
-              <span className="text-xs text-gray-300 block mt-0.5 font-medium">
-                {isArabic 
-                  ? 'عرض تفصيلي لمهام الفيديو المكتملة، إجمالي الأرباح اليومية وتوزيع مكافآت الرعاة' 
-                  : 'View completed video ads, daily profit totals & sponsor breakdown'}
-              </span>
-            </div>
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 relative z-10 flex-1">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-tr from-amber-500/25 to-[#FF6B00]/25 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-[0_0_10px_rgba(245,158,11,0.25)]">
+            <History className="w-4 h-4" />
           </div>
+          <p className="text-xs sm:text-[13px] font-black text-white tracking-tight truncate sm:whitespace-nowrap leading-none">
+            {isArabic ? 'تقرير الأرباح والمهام الأسبوعية 📊' : 'Weekly Earnings & Tasks Report 📊'}
+          </p>
+        </div>
 
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="hidden sm:flex flex-col text-end">
-              <span className="text-xs font-bold text-amber-400 flex items-center gap-1 justify-end">
-                <TrendingUp className="w-3.5 h-3.5" />
-                <span>{isArabic ? 'عرض السجل' : 'View History'}</span>
-              </span>
-              <span className="text-[10px] text-gray-400">
-                {isArabic ? 'تحديث فوري' : 'Live analytics'}
-              </span>
-            </div>
-            <div className="w-9 h-9 rounded-xl bg-white/5 group-hover:bg-amber-500/25 border border-white/10 group-hover:border-amber-500/40 flex items-center justify-center text-gray-300 group-hover:text-amber-300 transition-all shadow-sm">
-              {isArabic ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-            </div>
-          </div>
+        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/5 group-hover:bg-amber-500/25 border border-white/10 group-hover:border-amber-500/40 flex items-center justify-center text-gray-300 group-hover:text-amber-300 transition-all shrink-0 relative z-10 shadow-sm">
+          {isArabic ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
         </div>
       </div>
 

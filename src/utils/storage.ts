@@ -8,6 +8,8 @@ export interface StoredAccount {
   id: string;
   email: string;
   username: string;
+  avatarUrl?: string;
+  photoURL?: string;
   password?: string;
   walletAddress: string;
   vipLevel: number;
@@ -124,6 +126,17 @@ export function generateUnique6DigitReferralCode(existingUsers: StoredAccount[] 
           tasksCompletedToday: 0,
           lastUpdated: Date.now()
         }));
+      }
+    } catch {}
+
+    // Complete Purge of Transactions Log (clears 3795 accumulated transactions as requested)
+    try {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('vipads_tx_log_purged_3795_v1') !== 'true') {
+        localStorage.setItem('vipads_tx_log_purged_3795_v1', 'true');
+        localStorage.removeItem(STORAGE_KEYS.GLOBAL_TRANSACTIONS);
+        localStorage.removeItem('vipads_all_transactions');
+        localStorage.setItem(STORAGE_KEYS.GLOBAL_TRANSACTIONS, JSON.stringify([]));
+        localStorage.setItem('vipads_all_transactions', JSON.stringify([]));
       }
     } catch {}
 
@@ -1027,6 +1040,13 @@ export const storage = {
       }
     }
 
+    try {
+      const storedAvatar = localStorage.getItem(`vipads_user_avatar_${cleanEmail}`);
+      if (storedAvatar) {
+        found.avatarUrl = storedAvatar;
+      }
+    } catch {}
+
     return found;
   },
 
@@ -1822,6 +1842,20 @@ export const storage = {
       }
     } catch (e) {
       console.warn('Failed to save transactions:', e);
+    }
+  },
+
+  clearAllTransactions(): void {
+    inMemoryTransactionsCache = [];
+    try {
+      localStorage.setItem(STORAGE_KEYS.GLOBAL_TRANSACTIONS, JSON.stringify([]));
+      localStorage.setItem('vipads_all_transactions', JSON.stringify([]));
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('vipads_transactions_changed'));
+        window.dispatchEvent(new Event('storage'));
+      }
+    } catch (e) {
+      console.warn('Failed to clear transactions:', e);
     }
   },
 

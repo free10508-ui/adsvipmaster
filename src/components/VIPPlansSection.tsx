@@ -143,6 +143,7 @@ export const VIPPlansSection: React.FC<VIPPlansSectionProps> = React.memo(({
   
   // Track selected media view per VIP card: 'partner' | 'equipment' | 'video'
   const [selectedMediaTabs, setSelectedMediaTabs] = useState<Record<string, 'partner' | 'equipment' | 'video'>>({});
+  const isExecutingActionRef = useRef<boolean>(false);
 
   // Show shimmer skeleton while data hydrates or if plans are not yet populated
   if (isLoading || !plans || plans.length === 0) {
@@ -157,8 +158,6 @@ export const VIPPlansSection: React.FC<VIPPlansSectionProps> = React.memo(({
     soundEngine.playClick();
     setSelectedMediaTabs(prev => ({ ...prev, [planId]: tab }));
   };
-
-  const isExecutingActionRef = useRef<boolean>(false);
 
   const handleLockedTierClick = (plan: VIPPlan) => {
     if (isExecutingActionRef.current) return;
@@ -366,11 +365,6 @@ export const VIPPlansSection: React.FC<VIPPlansSectionProps> = React.memo(({
                     <div className="flex items-center gap-1.5">
                       <span className="text-[9px] font-mono font-bold text-gray-400 uppercase tracking-widest">
                         {language === 'ar' ? `المستوى ${plan.level}` : `TIER ${plan.level}`}
-                      </span>
-                      <span className="text-gray-600">•</span>
-                      <span className="text-[9px] font-bold text-emerald-400 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                        <span>{language === 'ar' ? 'عقدة نشطة' : 'Online Node'}</span>
                       </span>
                     </div>
 

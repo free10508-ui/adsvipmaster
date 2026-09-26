@@ -118,6 +118,15 @@ export default function App() {
     const unsubscribeAuth = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser && firebaseUser.email) {
         const email = firebaseUser.email.toLowerCase().trim();
+        const photo = firebaseUser.photoURL;
+        if (photo) {
+          try {
+            localStorage.setItem(`vipads_user_avatar_${email}`, photo);
+          } catch {}
+          storage.updateUser(email, { avatarUrl: photo, photoURL: photo });
+          setUser((prev) => ({ ...prev, avatarUrl: photo, photoURL: photo }));
+        }
+
         const currentEmail = storage.getCurrentUserEmail();
         if (!currentEmail || currentEmail !== email) {
           if (!storage.userExists(email)) {
@@ -184,6 +193,8 @@ export default function App() {
         joinedDate: stored.joinedDate,
         vipActivatedAt: stored.vipActivatedAt,
         vipExpiresAt: stored.vipExpiresAt,
+        avatarUrl: stored.avatarUrl || (typeof localStorage !== 'undefined' ? localStorage.getItem(`vipads_user_avatar_${stored.email}`) || undefined : undefined),
+        photoURL: stored.photoURL || stored.avatarUrl || (typeof localStorage !== 'undefined' ? localStorage.getItem(`vipads_user_avatar_${stored.email}`) || undefined : undefined),
       };
     }
     return INITIAL_USER_PROFILE;
@@ -2889,12 +2900,6 @@ export default function App() {
       <InboxModal
         isOpen={isInboxOpen}
         onClose={() => setIsInboxOpen(false)}
-        transactions={transactions.filter(t => {
-          if (!t.userEmail) return true;
-          const uEmail = (user.email || user.username || '').toLowerCase().trim();
-          const tEmail = t.userEmail.toLowerCase().trim();
-          return tEmail === uEmail || (user.username && tEmail === user.username.toLowerCase().trim());
-        })}
         userId={user.userId || 'USR-1002'}
         userEmail={user.email || user.username}
       />

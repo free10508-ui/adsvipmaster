@@ -106,15 +106,6 @@ export const HeroHeader: React.FC<HeroHeaderProps> = React.memo(({
       {/* 1. AUTO-PLAY CAROUSEL (11 SLIDES - SHORT HEIGHT 180px - OBJECT-COVER - NO DISTORTION) */}
       <PresentationCarouselBanner onActionClick={onScrollToTasks} />
 
-      {/* 2. VISUAL EYE-CATCHER: DAILY TASK ORBITAL REACTOR */}
-      <div className="w-full">
-        <DailyTaskReactor
-          user={user}
-          vipPlan={vipPlan}
-          onScrollToTasks={onScrollToTasks}
-        />
-      </div>
-
       {/* 4. FIXED MAIN DASHBOARD: STRICTLY SEPARATED WALLET CARDS (مبلغ الإيداع وإجمالي الرصيد) */}
       <div 
         id="balance-and-withdraw-cards-grid"
@@ -330,6 +321,15 @@ export const HeroHeader: React.FC<HeroHeaderProps> = React.memo(({
             <Download className="w-4 h-4 text-[#FF6B00]" />
           </div>
         </button>
+
+        {/* 6. كارت مفاعل المهام اليومية (DAILY TASK REACTOR) - أسفل تثبيت التطبيق */}
+        <div className="col-span-2 sm:col-span-4 w-full">
+          <DailyTaskReactor
+            user={user}
+            vipPlan={vipPlan}
+            onScrollToTasks={onScrollToTasks}
+          />
+        </div>
 
       </div>
 

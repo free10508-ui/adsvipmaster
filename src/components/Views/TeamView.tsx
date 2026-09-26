@@ -192,12 +192,24 @@ export const TeamView: React.FC<TeamViewProps> = React.memo(({
     if (toastTimerRef.current) {
       clearTimeout(toastTimerRef.current);
     }
-    setSmoothToastMessage('تم الرابط فعال');
+    setSmoothToastMessage('تم نسخ رابط الإحالة');
     toastTimerRef.current = setTimeout(() => {
       setSmoothToastMessage(null);
-    }, 2000);
+    }, 2500);
 
-    setTimeout(() => setCopiedType(null), 2000);
+    if (onShowToast) {
+      onShowToast(
+        'تم نسخ رابط الإحالة',
+        'تم نسخ رابط الإحالة الخاص بك بنجاح إلى الحافظة! شاركه مع أصدقائك الآن.',
+        'success'
+      );
+    }
+
+    if (onCopySuccess) {
+      onCopySuccess('link');
+    }
+
+    setTimeout(() => setCopiedType(null), 2500);
   };
 
   // Fast Social Sharing Handlers
@@ -287,21 +299,31 @@ export const TeamView: React.FC<TeamViewProps> = React.memo(({
   return (
     <div id="team-referral-view" className="w-full max-w-xl mx-auto space-y-4 pb-24 animate-in fade-in duration-300" dir="rtl">
       
-      {/* Real-time Live Stream Synchronizer Status Banner */}
-      <div className="flex items-center justify-between px-3.5 py-2 rounded-2xl bg-gradient-to-r from-emerald-950/60 via-slate-900 to-black border border-emerald-500/30 shadow-lg shadow-emerald-950/40 text-xs">
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      {/* INTERACTIVE REFERRAL INVITATION BANNER - CLICK TO COPY REFERRAL LINK */}
+      <div 
+        id="referral-banner-card"
+        onClick={handleCopyLink}
+        className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-orange-500/35 hover:border-orange-400 shadow-xl shadow-black/60 transition-all duration-300 cursor-pointer active:scale-[0.99] select-none block w-full bg-[#0E121B]"
+        title="انقر لنسخ رابط الإحالة الخاص بك"
+      >
+        <img
+          src="https://i.ibb.co/Y4VzqFCV/Modern-Business-Trading-Investment-Facebook-Post.png"
+          alt="Referral Invitation Banner"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "https://i.ibb.co/Kc8M3pP8/Modern-Business-Trading-Investment-Facebook-Post.png";
+          }}
+          className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl group-hover:scale-[1.015] transition-transform duration-500"
+          loading="eager"
+          referrerPolicy="no-referrer"
+        />
+
+        {/* Hover / Tap Hint Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3 pointer-events-none">
+          <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FF6B00] to-amber-400 text-black font-black text-xs shadow-lg shadow-orange-500/30 flex items-center gap-1.5 animate-bounce">
+            <Copy className="w-3.5 h-3.5 text-black stroke-[3]" />
+            <span>انقر لنسخ رابط الإحالة</span>
           </span>
-          <div className="flex items-center gap-1.5 font-bold text-emerald-400">
-            <Radio className="w-3.5 h-3.5 animate-pulse text-emerald-400" />
-            <span>بث مباشر متصل</span>
-          </div>
         </div>
-        <span className="text-[11px] font-medium text-gray-400">
-          المسجلون في النسخة المنشورة يظهرون هنا فوراً ⚡
-        </span>
       </div>
 
       {/* 1. TOP CARD: INVITATION CODE & REFERRAL LINK */}

@@ -97,6 +97,8 @@ export interface UserProfile {
   username: string;
   userId: string;
   email?: string;
+  avatarUrl?: string;
+  photoURL?: string;
   walletAddress: string;
   vipLevel: number;
   totalBalanceUSDT: number;
